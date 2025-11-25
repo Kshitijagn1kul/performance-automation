@@ -7,7 +7,7 @@ SA_USERS = [{"usr": "emp1@erp.in", "pwd": "Agnikul_1"}]
 FU_USERS = [{"usr": "emp73@erp.in", "pwd": "Agnikul_1"}]
 
 # --- Map email to role ---
-USER_ROLE_MAP = {
+USER_ROLE_MAP: dict[str, str] = {
     "emp23@erp.in": " (FL) ",
     "emp1@erp.in": " (SA) ",
     "emp73@erp.in": " (FU) "
