@@ -1,0 +1,2913 @@
+MODULE,ENDPOINT,VERSION,METHOD,ARGUMENTS,,DESCRIPTION,PAYLOAD/RESPONSE FORMAT
+,,,,MANDATORY,OPTIONAL,,
+GENERIC,frappe.auth.get_logged_user,v1,GET,,,Verifies the user's authentication status.,
+,core.api.csrf.token,v1,GET,,,Retrieves the CSRF token for the current session.,
+,                                                         recruitment.config.getapi.get_users_role,v1,GET,,,Identifies the user's role for the current application.,"{""message"":{""roles"":[""Employee"",""Guest"",""All"",""Interviewer"",""Project Lead""]}}"
+Quick Access,recruitment.config.dashboardapi.get_fu_pending_count,v1,GET,,,Retrive all Quick Access statistics,"{
+    ""message"": {
+        ""pending_candidates"": 365,
+        ""pending_interviews"": 22,
+        ""pending_shortlisted"": 0,
+        ""candidates"": {
+            ""Pending"": 365,
+            ""Not Fit"": 39,
+            ""Rejected"": 14,
+            ""Park Aside"": 1,
+            ""Good Fit"": 22,
+            ""Shortlisted"": 4,
+            ""Hired"": 2,
+            ""TR Pending"": 1,
+            ""Unsorted"": 2
+        },
+        ""interviews"": {},
+        ""interview_schedules_sourcewise"": {
+            ""x_axis"": [],
+            ""y_axis"": []
+        },
+        ""task_assigned_sourcewise"": {
+            ""x_axis"": [],
+            ""y_axis"": []
+        }
+    }
+}"
+,recruitment.config.dashboardapi.get_pending_counts,v1,GET,,,Retrive all Quick Access statistics,"{
+    ""message"": {
+        ""pending_candidates"": 0,
+        ""pending_interviews"": 0,
+        ""pending_tasks"": 0,
+        ""candidate_screening"": {},
+        ""interviews"": {},
+        ""pending_interview_sourcewise"": {
+            ""x_axis"": [],
+            ""y_axis"": []
+        },
+        ""pending_task_sourcewise"": {
+            ""x_axis"": [],
+            ""y_axis"": []
+        }
+    }
+}"
+Dashboard,recruitment.config.dashboardapi.get_counts,v1,GET,,,Retrieves all cards counts for dashboard,"{
+    ""message"": {
+        ""total_teams"": 3,
+        ""total_sub_teams"": 8,
+        ""total_roles"": 11,
+        ""total_candidates"": 450,
+        ""interviewed_candidates"": 19,
+        ""hired_candidates"": 2
+    }
+}"
+,recruitment.config.dashboardapi.get_joblist?from_date=&to_date=,v1,GET,,"from_date,to_date","Retrieves job_post_chart,direct_recruitment_chart,overall_status_count,team_wise counts all data","{
+    ""message"": {
+        ""job_post_chart"": {
+            ""x_axis"": [
+                ""Jan"",
+                ""Feb"",
+                ""Mar"",
+                ""Apr"",
+                ""May"",
+                ""Jun"",
+                ""Jul"",
+                ""Aug"",
+                ""Sep"",
+                ""Oct"",
+                ""Nov"",
+                ""Dec""
+            ],
+            ""y_axis"": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    3,
+                    73,
+                    1
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ]
+        },
+        ""direct_recruitment_chart"": {
+            ""x_axis"": [
+                ""Jan"",
+                ""Feb"",
+                ""Mar"",
+                ""Apr"",
+                ""May"",
+                ""Jun"",
+                ""Jul"",
+                ""Aug"",
+                ""Sep"",
+                ""Oct"",
+                ""Nov"",
+                ""Dec""
+            ],
+            ""y_axis"": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    1
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ]
+        },
+        ""overall_status_count"": {
+            ""Pending"": 3,
+            ""In-progress"": 79,
+            ""Completed"": 2
+        },
+        ""team_wise"": [
+            {
+                ""team"": ""Procurement"",
+                ""Pending"": 0,
+                ""In-progress"": 4,
+                ""Completed"": 0
+            },
+            {
+                ""team"": ""Automation"",
+                ""Pending"": 3,
+                ""In-progress"": 74,
+                ""Completed"": 1
+            },
+            {
+                ""team"": ""It Support"",
+                ""Pending"": 0,
+                ""In-progress"": 1,
+                ""Completed"": 1
+            }
+        ]
+    }
+}"
+,recruitment.config.dashboardapi.candidate_analytic?from_date=&to_date=,,GET,,"from_date,to_date",Retrives Candidate Analytics br chart data and overall candidates status counts and team wise candidates status counts,"{
+    ""message"": {
+        ""x_axis"": [
+            ""Jan"",
+            ""Feb"",
+            ""Mar"",
+            ""Apr"",
+            ""May"",
+            ""Jun"",
+            ""Jul"",
+            ""Aug"",
+            ""Sep"",
+            ""Oct"",
+            ""Nov"",
+            ""Dec""
+        ],
+        ""y_axis"": [
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                22,
+                0,
+                2,
+                14,
+                1
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            [
+                0,
+                0,
+                0,
+                0,
+                0
+            ]
+        ],
+        ""overall_status_count"": {
+            ""Good Fit"": 22,
+            ""Interview Pending"": 0,
+            ""Hired"": 2,
+            ""Rejected"": 14,
+            ""Park Aside"": 1
+        },
+        ""Automation"": {
+            ""Good Fit"": 22,
+            ""Interview Pending"": 0,
+            ""Hired"": 1,
+            ""Rejected"": 14,
+            ""Park Aside"": 1
+        },
+        ""It Support"": {
+            ""Good Fit"": 0,
+            ""Interview Pending"": 0,
+            ""Hired"": 1,
+            ""Rejected"": 0,
+            ""Park Aside"": 0
+        }
+    }
+}"
+,recruitment.config.dashboardapi.application_conv_int?from_date=&to_date=,,GET,,"from_date,to_date","Retrive total_candidates counts,hired counts, candidates_count,interview_mode_counts counts data","{
+    ""message"": {
+        ""total_candidates"": 773,
+        ""candidates_count"": 772,
+        ""hired_count"": 1,
+        ""interview_mode_counts"": {
+            ""offline"": 14,
+            ""online"": 18
+        }
+    }
+}"
+,recruitment.config.dashboardapi.candidate_source_analytics?from_date=&to_date=,,GET,,"from_date,to_date",Retrive candidate source analytic data and ovarall candidate counts,"{
+    ""message"": {
+        ""source_data"": [
+            {
+                ""name"": ""Inbound"",
+                ""value"": 564,
+                ""hired"": 2
+            },
+            {
+                ""name"": ""Job Portal"",
+                ""value"": 8,
+                ""hired"": 0
+            }
+        ],
+        ""overall_candidate_count"": 773
+    }
+}"
+Job Post,core.api.projects.list,v1,GET,,,To Retrive all Projects,"{
+    ""message"": {
+        ""details"": [
+            {
+                ""name1"": ""General-P12"",
+                ""code"": ""P0205"",
+                ""approver"": ""emp41@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P12"",
+                ""code"": ""P0082"",
+                ""approver"": ""emp41@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P13"",
+                ""code"": ""P0081"",
+                ""approver"": ""emp43@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P13"",
+                ""code"": ""P0206"",
+                ""approver"": ""emp43@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P14"",
+                ""code"": ""P0080"",
+                ""approver"": ""emp48@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P14"",
+                ""code"": ""P0207"",
+                ""approver"": ""emp48@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P15"",
+                ""code"": ""P0079"",
+                ""approver"": ""emp52@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P15"",
+                ""code"": ""P0208"",
+                ""approver"": ""emp52@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P27"",
+                ""code"": ""P0271"",
+                ""approver"": ""emp58@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P27"",
+                ""code"": ""P0016"",
+                ""approver"": ""emp58@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P28"",
+                ""code"": ""P0272"",
+                ""approver"": ""emp59@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P28"",
+                ""code"": ""P0015"",
+                ""approver"": ""emp59@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P29"",
+                ""code"": ""P0273"",
+                ""approver"": ""emp60@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P29"",
+                ""code"": ""P0014"",
+                ""approver"": ""emp60@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P30"",
+                ""code"": ""P0274"",
+                ""approver"": ""emp61@agnikul.in""
+            },
+            {
+                ""name1"": ""General-P30"",
+                ""code"": ""P0013"",
+                ""approver"": ""emp61@agnikul.in""
+            },
+            {
+                ""name1"": ""P1-Design & Manufacturing"",
+                ""code"": ""P0143"",
+                ""approver"": ""emp6@agnikul.in""
+            },
+            {
+                ""name1"": ""P1-Testing"",
+                ""code"": ""P0144"",
+                ""approver"": ""emp6@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Civil"",
+                ""code"": ""P0093"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Civil"",
+                ""code"": ""P0197"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Electrical"",
+                ""code"": ""P0194"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Electrical"",
+                ""code"": ""P0090"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Instrumentation"",
+                ""code"": ""P0089"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Instrumentation"",
+                ""code"": ""P0193"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Plumbing"",
+                ""code"": ""P0091"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Plumbing"",
+                ""code"": ""P0195"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Pre-civil"",
+                ""code"": ""P0094"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Pre-civil"",
+                ""code"": ""P0198"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Structural"",
+                ""code"": ""P0092"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P10-Structural"",
+                ""code"": ""P0196"",
+                ""approver"": ""emp36@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Civil"",
+                ""code"": ""P0087"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Civil"",
+                ""code"": ""P0203"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Electrical"",
+                ""code"": ""P0084"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Electrical"",
+                ""code"": ""P0200"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Instrumentation"",
+                ""code"": ""P0199"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Instrumentation"",
+                ""code"": ""P0083"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Plumbing"",
+                ""code"": ""P0085"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Plumbing"",
+                ""code"": ""P0201"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Pre-civil"",
+                ""code"": ""P0204"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Pre-civil"",
+                ""code"": ""P0088"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Structural"",
+                ""code"": ""P0086"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P11-Structural"",
+                ""code"": ""P0202"",
+                ""approver"": ""emp38@agnikul.in""
+            },
+            {
+                ""name1"": ""P16-Design & Manufacturing"",
+                ""code"": ""P0209"",
+                ""approver"": ""emp54@agnikul.in""
+            },
+            {
+                ""name1"": ""P16-Design & Manufacturing"",
+                ""code"": ""P0077"",
+                ""approver"": ""emp54@agnikul.in""
+            },
+            {
+                ""name1"": ""P16-Testing"",
+                ""code"": ""P0210"",
+                ""approver"": ""emp54@agnikul.in""
+            },
+            {
+                ""name1"": ""P16-Testing"",
+                ""code"": ""P0078"",
+                ""approver"": ""emp54@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Civil"",
+                ""code"": ""P0215"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Civil"",
+                ""code"": ""P0075"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Electrical"",
+                ""code"": ""P0072"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Electrical"",
+                ""code"": ""P0212"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Instrumentation"",
+                ""code"": ""P0071"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Instrumentation"",
+                ""code"": ""P0211"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Plumbing"",
+                ""code"": ""P0213"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Plumbing"",
+                ""code"": ""P0073"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Pre-civil"",
+                ""code"": ""P0076"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Pre-civil"",
+                ""code"": ""P0216"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Structural"",
+                ""code"": ""P0214"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P17-Structural"",
+                ""code"": ""P0074"",
+                ""approver"": ""emp25@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Civil"",
+                ""code"": ""P0069"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Civil"",
+                ""code"": ""P0221"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Electrical"",
+                ""code"": ""P0218"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Electrical"",
+                ""code"": ""P0066"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Instrumentation"",
+                ""code"": ""P0217"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Instrumentation"",
+                ""code"": ""P0065"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Plumbing"",
+                ""code"": ""P0067"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Plumbing"",
+                ""code"": ""P0219"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Pre-civil"",
+                ""code"": ""P0222"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Pre-civil"",
+                ""code"": ""P0070"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Structural"",
+                ""code"": ""P0068"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P18-Structural"",
+                ""code"": ""P0220"",
+                ""approver"": ""emp55@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Civil"",
+                ""code"": ""P0063"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Civil"",
+                ""code"": ""P0227"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Electrical"",
+                ""code"": ""P0060"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Electrical"",
+                ""code"": ""P0224"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Instrumentation"",
+                ""code"": ""P0059"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Instrumentation"",
+                ""code"": ""P0223"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Plumbing"",
+                ""code"": ""P0225"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Plumbing"",
+                ""code"": ""P0061"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Pre-civil"",
+                ""code"": ""P0064"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Pre-civil"",
+                ""code"": ""P0228"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Structural"",
+                ""code"": ""P0062"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P19-Structural"",
+                ""code"": ""P0226"",
+                ""approver"": ""emp16@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Civil"",
+                ""code"": ""P0149"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Civil"",
+                ""code"": ""P0141"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Electrical"",
+                ""code"": ""P0138"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Electrical"",
+                ""code"": ""P0146"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Instrumentation"",
+                ""code"": ""P0145"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Instrumentation"",
+                ""code"": ""P0137"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Plumbing"",
+                ""code"": ""P0147"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Plumbing"",
+                ""code"": ""P0139"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Pre-civil"",
+                ""code"": ""P0142"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Pre-civil"",
+                ""code"": ""P0150"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Structural"",
+                ""code"": ""P0148"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P2-Structural"",
+                ""code"": ""P0140"",
+                ""approver"": ""emp10@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Civil"",
+                ""code"": ""P0233"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Civil"",
+                ""code"": ""P0057"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Electrical"",
+                ""code"": ""P0054"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Electrical"",
+                ""code"": ""P0230"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Instrumentation"",
+                ""code"": ""P0229"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Instrumentation"",
+                ""code"": ""P0053"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Plumbing"",
+                ""code"": ""P0055"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Plumbing"",
+                ""code"": ""P0231"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Pre-civil"",
+                ""code"": ""P0234"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Pre-civil"",
+                ""code"": ""P0058"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Structural"",
+                ""code"": ""P0232"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P20-Structural"",
+                ""code"": ""P0056"",
+                ""approver"": ""emp5@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Civil"",
+                ""code"": ""P0239"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Civil"",
+                ""code"": ""P0051"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Electrical"",
+                ""code"": ""P0048"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Electrical"",
+                ""code"": ""P0236"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Instrumentation"",
+                ""code"": ""P0235"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Instrumentation"",
+                ""code"": ""P0047"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Plumbing"",
+                ""code"": ""P0049"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Plumbing"",
+                ""code"": ""P0237"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Pre-civil"",
+                ""code"": ""P0240"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Pre-civil"",
+                ""code"": ""P0052"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Structural"",
+                ""code"": ""P0050"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P21-Structural"",
+                ""code"": ""P0238"",
+                ""approver"": ""emp46@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Civil"",
+                ""code"": ""P0245"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Civil"",
+                ""code"": ""P0045"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Electrical"",
+                ""code"": ""P0242"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Electrical"",
+                ""code"": ""P0042"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Instrumentation"",
+                ""code"": ""P0241"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Instrumentation"",
+                ""code"": ""P0041"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Plumbing"",
+                ""code"": ""P0043"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Plumbing"",
+                ""code"": ""P0243"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Pre-civil"",
+                ""code"": ""P0246"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Pre-civil"",
+                ""code"": ""P0046"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Structural"",
+                ""code"": ""P0044"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P22-Structural"",
+                ""code"": ""P0244"",
+                ""approver"": ""emp47@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Civil"",
+                ""code"": ""P0251"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Civil"",
+                ""code"": ""P0039"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Electrical"",
+                ""code"": ""P0248"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Electrical"",
+                ""code"": ""P0036"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Instrumentation"",
+                ""code"": ""P0035"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Instrumentation"",
+                ""code"": ""P0247"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Plumbing"",
+                ""code"": ""P0037"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Plumbing"",
+                ""code"": ""P0249"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Pre-civil"",
+                ""code"": ""P0252"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Pre-civil"",
+                ""code"": ""P0040"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Structural"",
+                ""code"": ""P0038"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P23-Structural"",
+                ""code"": ""P0250"",
+                ""approver"": ""emp50@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Civil"",
+                ""code"": ""P0033"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Civil"",
+                ""code"": ""P0257"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Electrical"",
+                ""code"": ""P0030"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Electrical"",
+                ""code"": ""P0254"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Instrumentation"",
+                ""code"": ""P0029"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Instrumentation"",
+                ""code"": ""P0253"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Plumbing"",
+                ""code"": ""P0255"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Plumbing"",
+                ""code"": ""P0031"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Pre-civil"",
+                ""code"": ""P0034"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Pre-civil"",
+                ""code"": ""P0258"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Structural"",
+                ""code"": ""P0256"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P24-Structural"",
+                ""code"": ""P0032"",
+                ""approver"": ""emp51@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Civil"",
+                ""code"": ""P0027"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Civil"",
+                ""code"": ""P0263"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Electrical"",
+                ""code"": ""P0024"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Electrical"",
+                ""code"": ""P0260"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Instrumentation"",
+                ""code"": ""P0023"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Instrumentation"",
+                ""code"": ""P0259"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Plumbing"",
+                ""code"": ""P0261"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Plumbing"",
+                ""code"": ""P0025"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Pre-civil"",
+                ""code"": ""P0028"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Pre-civil"",
+                ""code"": ""P0264"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Structural"",
+                ""code"": ""P0026"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P25-Structural"",
+                ""code"": ""P0262"",
+                ""approver"": ""emp56@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Civil"",
+                ""code"": ""P0021"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Civil"",
+                ""code"": ""P0269"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Electrical"",
+                ""code"": ""P0018"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Electrical"",
+                ""code"": ""P0266"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Instrumentation"",
+                ""code"": ""P0017"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Instrumentation"",
+                ""code"": ""P0265"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Plumbing"",
+                ""code"": ""P0019"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Plumbing"",
+                ""code"": ""P0267"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Pre-civil"",
+                ""code"": ""P0022"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Pre-civil"",
+                ""code"": ""P0270"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Structural"",
+                ""code"": ""P0020"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P26-Structural"",
+                ""code"": ""P0268"",
+                ""approver"": ""emp57@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Civil"",
+                ""code"": ""P0155"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Civil"",
+                ""code"": ""P0135"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Electrical"",
+                ""code"": ""P0152"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Electrical"",
+                ""code"": ""P0132"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Instrumentation"",
+                ""code"": ""P0131"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Instrumentation"",
+                ""code"": ""P0151"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Plumbing"",
+                ""code"": ""P0153"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Plumbing"",
+                ""code"": ""P0133"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Pre-civil"",
+                ""code"": ""P0136"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Pre-civil"",
+                ""code"": ""P0156"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Structural"",
+                ""code"": ""P0134"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P3-Structural"",
+                ""code"": ""P0154"",
+                ""approver"": ""emp15@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Civil"",
+                ""code"": ""P0279"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Civil"",
+                ""code"": ""P0011"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Electrical"",
+                ""code"": ""P0008"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Electrical"",
+                ""code"": ""P0276"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Instrumentation"",
+                ""code"": ""P0275"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Instrumentation"",
+                ""code"": ""P0007"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Plumbing"",
+                ""code"": ""P0277"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Plumbing"",
+                ""code"": ""P0009"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Pre-civil"",
+                ""code"": ""P0280"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Pre-civil"",
+                ""code"": ""P0012"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Structural"",
+                ""code"": ""P0278"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P31-Structural"",
+                ""code"": ""P0010"",
+                ""approver"": ""emp62@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Civil"",
+                ""code"": ""P0129"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Civil"",
+                ""code"": ""P0161"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Electrical"",
+                ""code"": ""P0158"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Electrical"",
+                ""code"": ""P0126"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Instrumentation"",
+                ""code"": ""P0157"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Instrumentation"",
+                ""code"": ""P0125"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Plumbing"",
+                ""code"": ""P0127"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Plumbing"",
+                ""code"": ""P0159"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Pre-civil"",
+                ""code"": ""P0162"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Pre-civil"",
+                ""code"": ""P0130"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Structural"",
+                ""code"": ""P0128"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P4-Structural"",
+                ""code"": ""P0160"",
+                ""approver"": ""emp19@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Civil"",
+                ""code"": ""P0167"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Civil"",
+                ""code"": ""P0123"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Electrical"",
+                ""code"": ""P0120"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Electrical"",
+                ""code"": ""P0164"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Instrumentation"",
+                ""code"": ""P0163"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Instrumentation"",
+                ""code"": ""P0119"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Plumbing"",
+                ""code"": ""P0165"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Plumbing"",
+                ""code"": ""P0121"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Pre-civil"",
+                ""code"": ""P0124"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Pre-civil"",
+                ""code"": ""P0168"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Structural"",
+                ""code"": ""P0166"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P5-Structural"",
+                ""code"": ""P0122"",
+                ""approver"": ""emp21@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Civil"",
+                ""code"": ""P0173"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Civil"",
+                ""code"": ""P0117"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Electrical"",
+                ""code"": ""P0170"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Electrical"",
+                ""code"": ""P0114"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Instrumentation"",
+                ""code"": ""P0113"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Instrumentation"",
+                ""code"": ""P0169"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Plumbing"",
+                ""code"": ""P0115"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Plumbing"",
+                ""code"": ""P0171"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Pre-civil"",
+                ""code"": ""P0118"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Pre-civil"",
+                ""code"": ""P0174"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Structural"",
+                ""code"": ""P0172"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P6-Structural"",
+                ""code"": ""P0116"",
+                ""approver"": ""emp23@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Civil"",
+                ""code"": ""P0111"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Civil"",
+                ""code"": ""P0179"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Electrical"",
+                ""code"": ""P0108"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Electrical"",
+                ""code"": ""P0176"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Instrumentation"",
+                ""code"": ""P0107"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Instrumentation"",
+                ""code"": ""P0175"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Plumbing"",
+                ""code"": ""P0177"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Plumbing"",
+                ""code"": ""P0109"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Pre-civil"",
+                ""code"": ""P0180"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Pre-civil"",
+                ""code"": ""P0112"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Structural"",
+                ""code"": ""P0110"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P7-Structural"",
+                ""code"": ""P0178"",
+                ""approver"": ""emp27@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Civil"",
+                ""code"": ""P0105"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Civil"",
+                ""code"": ""P0185"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Electrical"",
+                ""code"": ""P0102"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Electrical"",
+                ""code"": ""P0182"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Instrumentation"",
+                ""code"": ""P0101"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Instrumentation"",
+                ""code"": ""P0181"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Plumbing"",
+                ""code"": ""P0103"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Plumbing"",
+                ""code"": ""P0183"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Pre-civil"",
+                ""code"": ""P0106"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Pre-civil"",
+                ""code"": ""P0186"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Structural"",
+                ""code"": ""P0184"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P8-Structural"",
+                ""code"": ""P0104"",
+                ""approver"": ""emp29@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Civil"",
+                ""code"": ""P0099"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Civil"",
+                ""code"": ""P0191"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Electrical"",
+                ""code"": ""P0096"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Electrical"",
+                ""code"": ""P0188"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Instrumentation"",
+                ""code"": ""P0095"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Instrumentation"",
+                ""code"": ""P0187"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Plumbing"",
+                ""code"": ""P0189"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Plumbing"",
+                ""code"": ""P0097"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Pre-civil"",
+                ""code"": ""P0100"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Pre-civil"",
+                ""code"": ""P0192"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Structural"",
+                ""code"": ""P0190"",
+                ""approver"": ""emp34@agnikul.in""
+            },
+            {
+                ""name1"": ""P9-Structural"",
+                ""code"": ""P0098"",
+                ""approver"": ""emp34@agnikul.in""
+            }
+        ],
+        ""has_more"": false,
+        ""next_start"": 1000
+    }
+}"
+,core.api.departments.list,v1,GET,,,To Retrive the Departments,"{
+    ""message"": {
+        ""status"": ""success"",
+        ""status_code"": 200,
+        ""message"": ""Employee Records loaded successfully"",
+        ""data"": [
+            {
+                ""employee_id"": ""AGK410"",
+                ""full_name"": ""Aarthy L"",
+                ""department"": ""PCB - ACPL"",
+                ""designation"": ""Associate D"",
+                ""company_email"": ""aarthy_lakshmanan@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK640"",
+                ""full_name"": ""Aathi Lakshmi"",
+                ""department"": ""PCB - ACPL"",
+                ""designation"": ""Associate C"",
+                ""company_email"": ""aathilakshmi_t@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK646"",
+                ""full_name"": ""Abhinav Krishnan"",
+                ""department"": ""Flight Structures - ACPL"",
+                ""designation"": ""Associate D"",
+                ""company_email"": ""abhinav_krishnan@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK_INT025_468"",
+                ""full_name"": ""Abinaya K"",
+                ""department"": ""Ground Electrical - ACPL"",
+                ""designation"": ""Intern"",
+                ""company_email"": ""abinaya_k@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK636"",
+                ""full_name"": ""Abishraj VR"",
+                ""department"": ""Flight Propulsion - ACPL"",
+                ""designation"": ""Associate E"",
+                ""company_email"": ""abishraj_vr@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK308"",
+                ""full_name"": ""Abivarma B S"",
+                ""department"": ""3D Modelling - ACPL"",
+                ""designation"": ""Associate F"",
+                ""company_email"": ""abivarma_bs@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK193"",
+                ""full_name"": ""Abrar Ahmed A"",
+                ""department"": ""3D Modelling - ACPL"",
+                ""designation"": ""Associate G"",
+                ""company_email"": ""abrar_ahmed@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK443"",
+                ""full_name"": ""Aditi Paresh Kharat "",
+                ""department"": ""Flight Dynamics & Control - ACPL"",
+                ""designation"": ""Senior Officer"",
+                ""company_email"": ""aditikharat@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK405"",
+                ""full_name"": ""Afrin Banu A"",
+                ""department"": ""Finance - ACPL"",
+                ""designation"": ""Junior Specialist"",
+                ""company_email"": ""afrinbanu@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK231"",
+                ""full_name"": ""Ajay Pratap Singh"",
+                ""department"": ""Aerodynamics - ACPL"",
+                ""designation"": ""Senior Associate 2"",
+                ""company_email"": ""ajaypratap_singh@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK654"",
+                ""full_name"": ""Ajay Rathinam K"",
+                ""department"": ""Flight Structures - ACPL"",
+                ""designation"": ""Associate E"",
+                ""company_email"": ""ajay_k@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK425"",
+                ""full_name"": ""Ajithkumar C"",
+                ""department"": ""Transportation - ACPL"",
+                ""designation"": ""Driver"",
+                ""company_email"": ""ajithkumartransport@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK521"",
+                ""full_name"": ""Akansha Verma"",
+                ""department"": ""Flight Dynamics & Control - ACPL"",
+                ""designation"": ""Junior Manager"",
+                ""company_email"": ""akansha_verma@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK554"",
+                ""full_name"": ""Akilesh G"",
+                ""department"": ""Aerodynamics - ACPL"",
+                ""designation"": ""Associate D"",
+                ""company_email"": ""akilesh_g@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK220"",
+                ""full_name"": ""Akshara R V"",
+                ""department"": ""Aerodynamics - ACPL"",
+                ""designation"": ""Associate E"",
+                ""company_email"": ""akshara_rv@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK485"",
+                ""full_name"": ""Akshay Govind P T"",
+                ""department"": ""3D Modelling - ACPL"",
+                ""designation"": ""Associate C"",
+                ""company_email"": ""akshaygovind@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK603"",
+                ""full_name"": ""Alisha Martins"",
+                ""department"": ""PCB - ACPL"",
+                ""designation"": ""Associate C"",
+                ""company_email"": ""alisha_martins@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK651"",
+                ""full_name"": ""Aman Shameer"",
+                ""department"": ""Testing - ACPL"",
+                ""designation"": ""Associate D"",
+                ""company_email"": ""aman_shameer@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK667"",
+                ""full_name"": ""Amit Kumar Singh"",
+                ""department"": ""Flight Power Systems - ACPL"",
+                ""designation"": ""Associate E"",
+                ""company_email"": ""amitkumar_s@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            },
+            {
+                ""employee_id"": ""AGK682"",
+                ""full_name"": ""Ammay Bathla"",
+                ""department"": ""Flight Dynamics & Control - ACPL"",
+                ""designation"": ""Associate E"",
+                ""company_email"": ""ammay_b@agnikul.in"",
+                ""status"": ""Active"",
+                ""insurance_status"": ""Insured""
+            }
+        ],
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 20,
+            ""total"": 307,
+            ""pages"": 16
+        }
+    }
+}"
+,recruitment.config.getapi.get_jp?page=1&limit=10&from_date=&to_date=,v1,GET,"page,limit","from_date,to_date",Retrive all job post list data,"{
+    ""message"": {
+        ""status"": ""success"",
+        ""status_code"": 200,
+        ""message"": ""Job post Records loaded successfully"",
+        ""data"": [
+            {
+                ""team"": ""Automation"",
+                ""sub_team"": ""Back end developer"",
+                ""role_name"": ""Developer"",
+                ""creation"": ""2025-09-10 17:53:21.803462"",
+                ""name"": ""RE-2025-1895"",
+                ""status"": ""In-progress""
+            },
+            {
+                ""team"": ""Procurement"",
+                ""sub_team"": null,
+                ""role_name"": ""Developer"",
+                ""creation"": ""2025-09-09 16:51:26.716223"",
+                ""name"": ""RE-2025-1894"",
+                ""status"": ""In-progress""
+            },
+            {
+                ""team"": ""Procurement"",
+                ""sub_team"": null,
+                ""role_name"": ""Developer"",
+                ""creation"": ""2025-09-09 16:51:08.320839"",
+                ""name"": ""RE-2025-1893"",
+                ""status"": ""In-progress""
+            }
+        ],
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 10,
+            ""total"": 3,
+            ""pages"": 1
+        }
+    }
+}"
+,core.utils.get_employees?query=&start=0&limit=20,v1,GET,,"query,start,limit",Retrive all active Employees list for employees dropdown field,"{
+    ""message"": {
+        ""data"": [
+            {
+                ""employee_name"": ""EMP65"",
+                ""user_id"": ""emp65@erp.in"",
+                ""department"": ""Department 2 - A""
+            },
+            {
+                ""employee_name"": ""EMP89"",
+                ""user_id"": ""EMP89@erp.in"",
+                ""department"": ""Department 26 - A""
+            },
+            {
+                ""employee_name"": ""EMP88"",
+                ""user_id"": ""EMP88@erp.in"",
+                ""department"": ""Department 25 - A""
+            },
+            {
+                ""employee_name"": ""EMP87"",
+                ""user_id"": ""EMP87@erp.in"",
+                ""department"": ""Department 24 - A""
+            },
+            {
+                ""employee_name"": ""EMP45_DPL_PL_PPL"",
+                ""user_id"": ""EMP45@erp.in"",
+                ""department"": ""Department 13 - A""
+            },
+            {
+                ""employee_name"": ""EMP2_DL"",
+                ""user_id"": ""EMP2@erp.in"",
+                ""department"": ""Department 1 - A""
+            }
+        ],
+        ""pagination"": {
+            ""has_more"": true,
+            ""next_start"": 20,
+            ""start"": 0,
+            ""limit"": 20,
+            ""total_fetched"": 103
+        }
+    }
+}"
+,recruitment.config.getapi.get_jobstatus_counts?requested_by=Self,,GET,requested_by,,Retrive job post status counts ,"{
+    ""message"": [
+        "" Respirators, protective clothing, gloves, hard hats, eye protection, boots."",
+        ""Gas detectors, oxygen meters, combustible gas detectors, air monitoring instruments."",
+        ""Portable fans, exhaust fans, ventilation ducts, air scrubbers."",
+        ""Harness, lanyards, rescue tripod, hoists, stretchers, first aid kits."",
+        ""Two-way radios, voice-activated communication systems."",
+        ""Explosion-proof lighting, portable flashlights, battery-powered lights."",
+        ""Electric/manual hoists, winches, rope access systems."",
+        ""Hand tools, cutting tools, drills, wrenches, screwdrivers, grinders."",
+        ""Entry kits, ladders, confined space access systems."",
+        ""Tagging and lockout devices, tool lanyards, laser measurement tools.""
+    ]
+}"
+,"core.factory.api.file.upload
+",,POST,,,Add atachments in Attachment doctype and get that id,"{
+    ""message"": {
+        ""status"": ""success"",
+        ""status_code"": 200,
+        ""message"": ""File uploaded successfully"",
+        ""data"": {
+            ""file_id"": ""cc1ba07cbe8f0607"",
+            ""file_url"": ""/private/files/recruitment/cc1ba07cbe8f0607.pdf"",
+            ""original_filename"": ""AuthorizationForm (1).pdf"",
+            ""file_size"": 27630,
+            ""mime_type"": ""application/pdf"",
+            ""is_private"": true,
+            ""path"": ""recruitment"",
+            ""hash"": ""7fea870729a4a4543ddde7fc774083ab60d6f8a9c5a9ba31b1dd7fd2ae1805f7"",
+            ""scan_status"": ""Skipped"",
+            ""attachment_record"": ""cc1ba07cbe8f0607""
+        }
+    }
+}"
+,core.factory.api.post_data,,POST,,,Create Recruitment  Requests,"{key: ""job_post"", request_type: ""Job post request"", team: ""IT Support"", sub_team: ""System Manager"",…}
+assigned_to
+:
+""emp65@erp.in""
+close_date
+:
+""31-12-2025""
+fh_notes
+:
+""xsxsxsxsxsxsxsx""
+job_description
+:
+""8555cb5a1b9076fc""
+key
+:
+""job_post""
+notes
+:
+""sazsaz""
+request_type
+:
+""Job post request""
+role_name
+:
+""Senior Chief of Staff""
+sorted_by
+:
+{assigned_by: ""emp65@erp.in"", assigned_date: ""2025-12-09T09:52:20.845Z""}
+status
+:
+""In-progress""
+sub_team
+:
+""System Manager""
+team
+:
+""IT Support""
+upload_task
+:
+""cc1ba07cbe8f0607"""
+,recruitment.get_api.get_teams_list,v1,GET,,team,Retrive all teams list and based on each team get all sub team list ,"{""message"":[{""team"":""Procurement""},{""team"":""Automation""},{""team"":""IT Support""}]}"
+,recruitment.get_api.get_active_designations,,GET,,,Retrive the all Active designations,"{""message"":{""email"":""emp1@agnikul.in"",""Pending_count"":0,""request_details"":[]}}"
+,recruitment.put_api.adding_and_sorting,,POST,,,Add Candidates ,"{team: ""IT Support"", sub_team: ""System Manager"", role_name: ""Director"", candidate_name: ""test1"",…}
+attach_resume
+:
+""9234cf0e829ec695""
+candidate_name
+:
+""test1""
+experience
+:
+10
+notes
+:
+""testing purpose""
+notice_period
+:
+30
+referred_by
+:
+""Indeed""
+role_name
+:
+""Director""
+source
+:
+""Job Portal""
+sub_team
+:
+""System Manager""
+team
+:
+""IT Support"""
+,recruitment.config.getapi.view_details?job_name=RE-2026-8358,,GET,candidate_name,,Retrive all details for a single request,"{
+    ""message"": {
+        ""candidate_details"": {
+            ""name"": ""CAD-09-25-01948"",
+            ""owner"": ""Administrator"",
+            ""creation"": ""2025-09-03 17:51:46.804701"",
+            ""modified"": ""2025-12-09 17:45:58.731855"",
+            ""modified_by"": ""emp65@erp.in"",
+            ""docstatus"": 0,
+            ""idx"": 0,
+            ""candidate_name"": ""Guna P"",
+            ""work_experience"": ""6"",
+            ""notice_period"": ""8"",
+            ""subject"": ""Inbound Candidates test mail"",
+            ""sender"": ""guna_p@agnikul.in"",
+            ""status"": ""Pending"",
+            ""source"": ""Inbound"",
+            ""referred_by"": null,
+            ""upload_task"": null,
+            ""resume"": ""/private/files/1.+How+to+develop+Topics+_+Template.docx.pdf"",
+            ""dl_response"": ""[\n {\n  \""action\"": \""Pending\"",\n  \""action_by\"": \""srinath@agnikul.in\"",\n  \""action_time\"": \""\"",\n  \""progress\"": \""review-resume\"",\n  \""remarks\"": \""\""\n }\n]"",
+            ""interviews"": null,
+            ""hired_on"": null,
+            ""content"": ""Dear ,I am writing to express my interest in the vacant position at Agnikul\u00a0ERP. I have attached my resume and cover letter for your review, which further detail my qualifications and experience.Thank you for your time and consideration.Best regards,Muthamizhan Boobalan\n"",
+            ""sorted_by"": ""EMP65@erp.in"",
+            ""sorted_date"": ""2025-09-09 16:51:26.830332"",
+            ""notes"": null,
+            ""re_raise_request"": ""RE-2025-2273"",
+            ""approver"": ""srinath@agnikul.in"",
+            ""onboard_id"": null,
+            ""doctype"": ""RE_Candidates"",
+            ""responses"": [
+                {
+                    ""action"": ""Pending"",
+                    ""action_by"": null,
+                    ""action_time"": """",
+                    ""progress"": ""review-resume"",
+                    ""remarks"": """"
+                }
+            ]
+        }
+    }
+}"
+Assignments,recruitment.config.getapi.source_candidate?start=0&limit=10&from_date=&to_date=&requested_by=Others,,GET,requested_by( Self or Others),"from_date,to_date,start,limit",Retrives all assignments Source Candidate tab statistics,"{
+    ""message"": {
+        ""data"": [
+            {
+                ""name"": ""RE-2025-1895"",
+                ""creation"": ""2025-09-10 17:53:21.803462"",
+                ""team"": ""Automation"",
+                ""sub_team"": ""Back end developer"",
+                ""role_name"": ""Developer"",
+                ""status"": ""In-progress"",
+                ""assigned_to"": ""EMP77@erp.in"",
+                ""candidate_count"": 0
+            },
+            {
+                ""name"": ""RE-2025-1888"",
+                ""creation"": ""2025-09-09 16:25:33.154297"",
+                ""team"": ""Procurement"",
+                ""sub_team"": null,
+                ""role_name"": ""test"",
+                ""status"": ""In-progress"",
+                ""assigned_to"": ""Administrator"",
+                ""candidate_count"": 1
+            },
+            {
+                ""name"": ""RE-08-25-42746"",
+                ""creation"": ""2025-09-06 16:07:59.250205"",
+                ""team"": ""Automation"",
+                ""sub_team"": ""UI/UX designer"",
+                ""role_name"": ""Intern"",
+                ""status"": ""In-progress"",
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""candidate_count"": 3
+            },
+            {
+                ""name"": ""RE-07-25-31069"",
+                ""creation"": ""2025-09-06 16:07:55.709771"",
+                ""team"": ""Automation"",
+                ""sub_team"": ""UI/UX designer"",
+                ""role_name"": ""Associate C"",
+                ""status"": ""Pending"",
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""candidate_count"": 1
+            }
+        ],
+        ""status_counts"": {
+            ""Pending"": 3,
+            ""In-progress"": 78
+        }
+    }
+}"
+,recruitment.config.getapi.candidate_screening?page=1&limit=10&requested_by=Others&tab=assignments,,GET,"page,limit,requested_by,tab",,Retrive Candidate Screening & Task satistics and based on tab data get the data for Screening & Interview tab also,"{
+    ""message"": {
+        ""candidates"": [
+            {
+                ""name"": ""CAD-09-25-01948"",
+                ""candidate_name"": ""Guna P"",
+                ""status"": ""Pending"",
+                ""resume"": ""/private/files/1.+How+to+develop+Topics+_+Template.docx.pdf"",
+                ""re_raise_request"": ""RE-2025-1894"",
+                ""approver"": ""EMP1@erp.in"",
+                ""Interviews"": null,
+                ""dl_response"": ""[\n {\n  \""action\"": \""Pending\"",\n  \""action_by\"": \""EMP1@erp.in\"",\n  \""action_time\"": \""\"",\n  \""progress\"": \""review-resume\"",\n  \""remarks\"": \""\""\n }\n]"",
+                ""task"": null,
+                ""onboard_id"": null,
+                ""team"": ""Procurement"",
+                ""sub_team"": null,
+                ""role_name"": ""Developer"",
+                ""upload_task"": null,
+                ""assigned_to"": ""EMP77@erp.in"",
+                ""approver_name"": ""EMP1_A""
+            },
+            {
+                ""name"": ""CAD-09-25-01944"",
+                ""candidate_name"": ""Shanmugavel M"",
+                ""status"": ""Pending"",
+                ""resume"": ""/private/files/Screenshot from 2025-09-03 13-23-01.png\n/private/files/file-example_PDF_1MB.pdf"",
+                ""re_raise_request"": ""RE-2025-1893"",
+                ""approver"": ""EMP1@erp.in"",
+                ""Interviews"": null,
+                ""dl_response"": ""[\n {\n  \""action\"": \""Pending\"",\n  \""action_by\"": \""EMP1@erp.in\"",\n  \""action_time\"": \""\"",\n  \""progress\"": \""review-resume\"",\n  \""remarks\"": \""\""\n }\n]"",
+                ""task"": null,
+                ""onboard_id"": null,
+                ""team"": ""Procurement"",
+                ""sub_team"": null,
+                ""role_name"": ""Developer"",
+                ""upload_task"": null,
+                ""assigned_to"": ""EMP77@erp.in"",
+                ""approver_name"": ""EMP1_A""
+            }
+        ],
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 10,
+            ""total"": 425,
+            ""pages"": 43
+        }
+    }
+}"
+,recruitment.config.getapi.interview?page=1&limit=10&requested_by=Others&tab=assignments,,GET,"page,limit,requested_by,tab",,Retrive Candidate interview satistics and based on tab data get the data for Screening & Interview tab also,"{
+    ""message"": {
+        ""candidates"": [
+            {
+                ""name"": ""RC-04-25-14748"",
+                ""candidate_name"": ""Mathan Raj"",
+                ""status"": ""Rejected"",
+                ""resume"": ""/private/files/Mathan Raj_Resume_admin.pdf"",
+                ""re_raise_request"": ""RE-05-25-17545"",
+                ""approver"": ""EMP65@erp.in"",
+                ""Interviews"": ""{\n    \""Interview-1\"": {\n        \""interview_with\"": \""yashawanth_sm@agnikul.in\"",\n        \""interview_date\"": \""24-06-2025\"",\n        \""interview_start_time\"": \""16:00\"",\n        \""interview_end_time\"": \""16:30\"",\n        \""interview_mode\"": \""Offline\"",\n        \""interview_link\"": \""\"",\n        \""remarks\"": \""Kindly reject this candidate , because he is not intrested \"",\n        \""Schedules_By\"": \""mahera_thanish_g@agnikul.in\"",\n        \""schedules_Time\"": \""2025-06-24 11:44:24\"",\n        \""Interview Response-1\"": {\n            \""employment_type\"": null,\n            \""notes\"": null,\n            \""action\"": \""Rejected\"",\n            \""remarks\"": \""Candidate was not interested\"",\n            \""schedules_by\"": \""yashawanth_sm@agnikul.in\"",\n            \""schedules_time\"": \""2025-06-24 16:03:00\""\n        }\n    }\n}"",
+                ""dl_response"": ""{\n \""dl_response\"": {\n  \""Action By\"": \""yashawanth_sm@agnikul.in\"",\n  \""action_time\"": \""2025-06-10 17:02:55\"",\n  \""remarks\"": \""Please setup an interview on 12 june\""\n }\n}"",
+                ""task"": null,
+                ""onboard_id"": null,
+                ""team"": ""Automation"",
+                ""sub_team"": ""Devops"",
+                ""role_name"": ""Intern"",
+                ""upload_task"": null,
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""approver_name"": ""EMP65"",
+                ""round"": 1,
+                ""interview_with"": ""yashawanth_sm@agnikul.in"",
+                ""interview_date"": ""24-06-2025"",
+                ""interview_start_time"": ""16:00"",
+                ""interview_end_time"": ""16:30"",
+                ""further_persual"": false
+            },
+            {
+                ""name"": ""RC-05-25-23716"",
+                ""candidate_name"": ""Sanjay Krishna T N"",
+                ""status"": ""Rejected"",
+                ""resume"": ""/private/files/Sanjay Krishna T N - Resume 09.pdf"",
+                ""re_raise_request"": ""RE-05-25-17545"",
+                ""approver"": ""EMP65@erp.in"",
+                ""Interviews"": ""{\n    \""Interview-1\"": {\n        \""interview_with\"": \""yashawanth_sm@agnikul.in\"",\n        \""interview_date\"": \""24-06-2025\"",\n        \""interview_start_time\"": \""12:00\"",\n        \""interview_end_time\"": \""12:30\"",\n        \""interview_mode\"": \""Offline\"",\n        \""interview_link\"": \""\"",\n        \""remarks\"": \""Kindly reject this \"",\n        \""Schedules_By\"": \""mahera_thanish_g@agnikul.in\"",\n        \""schedules_Time\"": \""2025-06-24 14:16:18\"",\n        \""Interview Response-1\"": {\n            \""employment_type\"": null,\n            \""notes\"": null,\n            \""action\"": \""Rejected\"",\n            \""remarks\"": \""Candidate was not interested\"",\n            \""schedules_by\"": \""yashawanth_sm@agnikul.in\"",\n            \""schedules_time\"": \""2025-06-24 16:04:00\""\n        }\n    }\n}"",
+                ""dl_response"": ""{\n \""dl_response\"": {\n  \""Action By\"": \""yashawanth_sm@agnikul.in\"",\n  \""action_time\"": \""2025-06-10 17:05:06\"",\n  \""remarks\"": \""please schedule an interview on 12 june\\nmight be a good for development not for devops\""\n }\n}"",
+                ""task"": null,
+                ""onboard_id"": null,
+                ""team"": ""Automation"",
+                ""sub_team"": ""Devops"",
+                ""role_name"": ""Intern"",
+                ""upload_task"": null,
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""approver_name"": ""EMP65"",
+                ""round"": 1,
+                ""interview_with"": ""yashawanth_sm@agnikul.in"",
+                ""interview_date"": ""24-06-2025"",
+                ""interview_start_time"": ""12:00"",
+                ""interview_end_time"": ""12:30"",
+                ""further_persual"": false
+            },
+            {
+                ""name"": ""RC-05-25-23674"",
+                ""candidate_name"": ""Sriram Suresh Kumar"",
+                ""status"": ""Rejected"",
+                ""resume"": ""/private/files/Sriram_Suresh_Kumar-Resume.pdf"",
+                ""re_raise_request"": ""RE-05-25-17550"",
+                ""approver"": ""EMP65@erp.in"",
+                ""Interviews"": ""{\n    \""Interview-1\"": {\n        \""interview_with\"": \""yashawanth_sm@agnikul.in\"",\n        \""interview_date\"": \""24-06-2025\"",\n        \""interview_start_time\"": \""12:00\"",\n        \""interview_end_time\"": \""12:30\"",\n        \""interview_mode\"": \""Offline\"",\n        \""interview_link\"": \""\"",\n        \""remarks\"": \""Kindly reject this candidate , because we have already interviewed him .\"",\n        \""Schedules_By\"": \""mahera_thanish_g@agnikul.in\"",\n        \""schedules_Time\"": \""2025-06-24 11:53:42\"",\n        \""Interview Response-1\"": {\n            \""employment_type\"": null,\n            \""notes\"": null,\n            \""action\"": \""Rejected\"",\n            \""remarks\"": \""Rejected as the Expected CTC was HIgh\"",\n            \""schedules_by\"": \""yashawanth_sm@agnikul.in\"",\n            \""schedules_time\"": \""2025-06-24 13:51:14\""\n        }\n    }\n}"",
+                ""dl_response"": ""{\n \""dl_response\"": {\n  \""Action By\"": \""yashawanth_sm@agnikul.in\"",\n  \""action_time\"": \""2025-06-11 16:03:52\"",\n  \""remarks\"": \""Not suitable for UI/UX can fit into back end development\""\n }\n}"",
+                ""task"": null,
+                ""onboard_id"": null,
+                ""team"": ""Automation"",
+                ""sub_team"": ""UI/UX designer"",
+                ""role_name"": ""Intern"",
+                ""upload_task"": null,
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""approver_name"": ""EMP65"",
+                ""round"": 1,
+                ""interview_with"": ""yashawanth_sm@agnikul.in"",
+                ""interview_date"": ""24-06-2025"",
+                ""interview_start_time"": ""12:00"",
+                ""interview_end_time"": ""12:30"",
+                ""further_persual"": false
+            }
+        ],
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 10,
+            ""total"": 19,
+            ""pages"": 2
+        }
+    }
+}"
+,recruitment.config.getapi.hired?page=1&limit=10&requested_by=Others&tab=assignments,,GET,"page,limit,requested_by,tab",,Retrive Candidate Hired satistics and based on tab data get the data for Screening & Interview and Hired Candidate module statistics also,"{
+    ""message"": {
+        ""candidates"": [
+            {
+                ""name"": ""RC-07-25-30919"",
+                ""candidate_name"": ""Shanmugavel"",
+                ""status"": ""Hired"",
+                ""resume"": ""/private/files/Shanmugavel_QA_Resume.pdf"",
+                ""re_raise_request"": ""RE-05-25-18448"",
+                ""approver"": ""EMP65@erp.in"",
+                ""Interviews"": ""{\n    \""Interview-1\"": {\n        \""interview_with\"": \""yashawanth_sm@agnikul.in\"",\n        \""interview_date\"": \""21-07-2025\"",\n        \""interview_start_time\"": \""18:30\"",\n        \""interview_end_time\"": \""19:00\"",\n        \""interview_mode\"": \""Online\"",\n        \""interview_link\"": \""meet.google.com/hzi-zmww-rek\"",\n        \""remarks\"": \""\"",\n        \""Schedules_By\"": \""mahera_thanish_g@agnikul.in\"",\n        \""schedules_Time\"": \""2025-07-19 20:03:13\"",\n        \""Interview Response-1\"": {\n            \""employment_type\"": null,\n            \""notes\"": \""Please schedule an offline interview on AUG 6th second half\"",\n            \""action\"": \""Shortlisted\"",\n            \""remarks\"": \""\"",\n            \""schedules_by\"": \""yashawanth_sm@agnikul.in\"",\n            \""schedules_time\"": \""2025-08-05 16:48:02\""\n        }\n    }\n}"",
+                ""dl_response"": ""{\n \""dl_response\"": {\n  \""Action By\"": \""yashawanth_sm@agnikul.in\"",\n  \""action_time\"": \""2025-07-02 17:02:05\"",\n  \""remarks\"": \""\""\n }\n}"",
+                ""task"": null,
+                ""onboard_id"": null,
+                ""team"": ""Automation"",
+                ""sub_team"": ""Tester"",
+                ""role_name"": ""Associate C"",
+                ""upload_task"": null,
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""approver_name"": ""EMP65"",
+                ""round"": 1,
+                ""interview_with"": ""yashawanth_sm@agnikul.in"",
+                ""interview_date"": ""21-07-2025"",
+                ""interview_start_time"": ""18:30"",
+                ""interview_end_time"": ""19:00""
+            },
+            {
+                ""name"": ""CAD-09-25-01920"",
+                ""candidate_name"": ""Shanmugavel Mohan"",
+                ""status"": ""Hired"",
+                ""resume"": ""/private/files/Shivan35452c.png\n/private/files/file-example_PDF_1MB.pdf"",
+                ""re_raise_request"": ""REQ-09-25-1921"",
+                ""approver"": ""EMP28@erp.in"",
+                ""Interviews"": null,
+                ""dl_response"": ""[\n {\n  \""action\"": \""Pending\"",\n  \""action_by\"": \""emp28@erp.in\"",\n  \""action_time\"": \""\"",\n  \""progress\"": \""review-resume\"",\n  \""remarks\"": \""\""\n }\n]"",
+                ""task"": null,
+                ""onboard_id"": ""HRA_0925_1951"",
+                ""team"": ""IT Support"",
+                ""sub_team"": ""System Manager"",
+                ""role_name"": ""Intern"",
+                ""upload_task"": null,
+                ""assigned_to"": ""EMP37@erp.in"",
+                ""approver_name"": ""EMP28_A_DL_PPL""
+            }
+        ],
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 10,
+            ""total"": 2,
+            ""pages"": 1
+        }
+    }
+}"
+,recruitment.config.getapi.get_candidate_card_counts?page=1&limit=10&requested_by=Others&tab=assignments,,GET,"page,limit,requested_by,tab",,Retrive all cards count and based on tab data get the data for Screening & Interview tab also,"{
+    ""message"": {
+        ""screening_count"": 0,
+        ""pending_count"": 363,
+        ""task_count"": 0,
+        ""interview_count"": 0,
+        ""hired_count"": 2,
+        ""shortlisted_count"": 4,
+        ""rejected_count"": 14,
+        ""task_assigned_count"": 0,
+        ""park_aside_count"": 1,
+        ""total_candidate_count"": 446
+    }
+}"
+,recruitment.put_api.update_dl_response,,PUT,,,Upadte the responses regarding the candidate,"{docname: ""RC-04-25-14649"", action: ""Good Fit"", remarks: ""h""}
+action
+:
+""Good Fit""
+docname
+:
+""RC-04-25-14649""
+remarks
+:
+""h"""
+,recruitment.put_api.interview_schedules,,PUT,,,Schedule the interviews,"docname, action, interview_with, date, start_time, end_time, remarks, mode, link=None"
+,recruitment.put_api.interview_response,,PUT,,,Update the interview response ,"docname, feedback, action, skills,communication, attitude,compare_employee, transcript,further_perusal=None,person_name=None"
+,recruitment.put_api.upload_bulk_candidates,,POST,,,Bulk imports for candidates,
+,recruitment.put_api.update_onboard_id,,PUT,,,After hiring a candidates update the onboard id in candidates,"docname,id"
+Recruitment Tracker,recruitment.config.getapi.get_teams_summary?page=1&limit=10&from_date=&to_date=&requested_by=Self tab=request&team=Automation&sub_team=Back+end+developer&role=Associate+C (or) job_name=RE-08-25-42512,v1,GET,requested_by( Self or Others),"from_date,to_date ( format YYYY-mm-dd)","To Retrive all teams and sub team and role list if click any team based on team based on current detaisl get all list of requests under that team,subteam,role and if click any request get all details about that request , all list of candidates also","{
+    ""message"": {
+        ""data"": [
+            {
+                ""team"": ""Automation"",
+                ""sub_team"": ""Back end developer"",
+                ""role_name"": ""Associate C"",
+                ""no_of_job_post"": 4,
+                ""no_of_candidate"": 61,
+                ""interviewed_candidate"": 0,
+                ""hired"": 0
+            },
+            {
+                ""team"": ""Automation"",
+                ""sub_team"": ""Back end developer"",
+                ""role_name"": ""Associate D"",
+                ""no_of_job_post"": 1,
+                ""no_of_candidate"": 7,
+                ""interviewed_candidate"": 1,
+                ""hired"": 0
+            },
+            {
+                ""team"": ""Automation"",
+                ""sub_team"": ""Back end developer"",
+                ""role_name"": ""Associate E"",
+                ""no_of_job_post"": 2,
+                ""no_of_candidate"": 2,
+                ""interviewed_candidate"": 0,
+                ""hired"": 0
+            },
+            {
+                ""team"": ""Automation"",
+                ""sub_team"": ""Back end developer"",
+                ""role_name"": ""Associate G"",
+                ""no_of_job_post"": 1,
+                ""no_of_candidate"": 1,
+                ""interviewed_candidate"": 0,
+                ""hired"": 0
+            },
+            {
+                ""team"": ""Automation"",
+                ""sub_team"": ""Back end developer"",
+                ""role_name"": ""Developer"",
+                ""no_of_job_post"": 1,
+                ""no_of_candidate"": 0,
+                ""interviewed_candidate"": 0,
+                ""hired"": 0
+            }
+        ],
+        ""total_teams"": 3,
+        ""total_sub_teams"": 8,
+        ""total_roles"": 12,
+        ""mode"": ""summary"",
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 10,
+            ""total"": 50,
+            ""pages"": 5
+        }
+    }
+}"
+,,,,,,,"{
+    ""message"": {
+        ""records"": [
+            {
+                ""request_id"": ""RE-08-25-42512"",
+                ""requested_date"": ""06-09-2025 16:07"",
+                ""requested_by"": ""Administrator"",
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""role_name"": ""Associate C"",
+                ""request_type"": ""Job post request"",
+                ""status"": ""In-progress""
+            },
+            {
+                ""request_id"": ""RE-08-25-40349"",
+                ""requested_date"": ""06-09-2025 16:07"",
+                ""requested_by"": ""Administrator"",
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""role_name"": ""Associate C"",
+                ""request_type"": ""Job post request"",
+                ""status"": ""In-progress""
+            },
+            {
+                ""request_id"": ""RE-07-25-33922"",
+                ""requested_date"": ""06-09-2025 16:07"",
+                ""requested_by"": ""Administrator"",
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""role_name"": ""Associate C"",
+                ""request_type"": ""Job post request"",
+                ""status"": ""In-progress""
+            },
+            {
+                ""request_id"": ""RE-05-25-17677"",
+                ""requested_date"": ""06-09-2025 16:07"",
+                ""requested_by"": ""Administrator"",
+                ""assigned_to"": ""EMP1@erp.in"",
+                ""role_name"": ""Associate C"",
+                ""request_type"": ""Job post request"",
+                ""status"": ""In-progress""
+            }
+        ],
+        ""status_counts"": {
+            ""Pending"": 0,
+            ""In-progress"": 4,
+            ""Completed"": 0
+        },
+        ""mode"": ""detailed"",
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 10,
+            ""total"": 4,
+            ""pages"": 1
+        }
+    }
+}"
+,,,,,,,"{
+    ""message"": {
+        ""job_details"": {
+            ""name"": ""RE-08-25-42512"",
+            ""owner"": ""Administrator"",
+            ""creation"": ""2025-09-06 16:07:58.911795"",
+            ""modified"": ""2025-09-06 16:07:58.920021"",
+            ""modified_by"": ""Administrator"",
+            ""docstatus"": 0,
+            ""idx"": 0,
+            ""team"": ""Automation"",
+            ""sub_team"": ""Back end developer"",
+            ""role_name"": ""Associate C"",
+            ""job_description"": null,
+            ""upload_task"": null,
+            ""close_date"": null,
+            ""status"": ""In-progress"",
+            ""request_type"": ""Job post request"",
+            ""raised_by"": ""Administrator"",
+            ""notes"": null,
+            ""assigned_to"": ""EMP1@erp.in"",
+            ""fh_notes"": null,
+            ""interviewers"": ""{\""interviewer_one\"": \""emp65@erp.in\"", \""interviewer_two\"": \""EMP10@erp.in\""}"",
+            ""sorted_by"": null,
+            ""import_file"": null,
+            ""doctype"": ""RE_Raise_Request""
+        }
+    }
+}"
+,,,,,,,"{
+    ""message"": {
+        ""records"": [
+            {
+                ""name"": ""RC-05-25-17136"",
+                ""candidate_name"": ""Ahamed Thanveer Nishad"",
+                ""status"": ""Not Fit"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            },
+            {
+                ""name"": ""RC-04-25-13250"",
+                ""candidate_name"": ""Akshara N S"",
+                ""status"": ""Pending"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            },
+            {
+                ""name"": ""RC-04-25-14555"",
+                ""candidate_name"": ""Yash Sinha"",
+                ""status"": ""Pending"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            },
+            {
+                ""name"": ""RC-04-25-14775"",
+                ""candidate_name"": ""Amal Prasad Trivedi"",
+                ""status"": ""Pending"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            },
+            {
+                ""name"": ""RC-04-25-13540"",
+                ""candidate_name"": ""Kumar Venkataramani"",
+                ""status"": ""Pending"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            },
+            {
+                ""name"": ""RC-04-25-13537"",
+                ""candidate_name"": ""Niraj Yadav"",
+                ""status"": ""Pending"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            },
+            {
+                ""name"": ""RC-04-25-16056"",
+                ""candidate_name"": ""Harinee Anandh"",
+                ""status"": ""Pending"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            },
+            {
+                ""name"": ""RC-05-25-16219"",
+                ""candidate_name"": ""F A N N E Y C H R I S T A"",
+                ""status"": ""Pending"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            },
+            {
+                ""name"": ""RC-05-25-23798"",
+                ""candidate_name"": ""PRAVEENKUMAR P"",
+                ""status"": ""Pending"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            },
+            {
+                ""name"": ""RC-05-25-23864"",
+                ""candidate_name"": ""KARTIKEY GOEL"",
+                ""status"": ""Pending"",
+                ""interviews"": null,
+                ""re_raise_request"": ""RE-05-25-17677"",
+                ""interview_rounds"": 0,
+                ""interview_with"": null
+            }
+        ],
+        ""status_counts"": {
+            ""pending"": 60,
+            ""shortlist"": 0,
+            ""good_fit"": 0,
+            ""hired"": 0,
+            ""no_show"": 0,
+            ""park_aside"": 0,
+            ""rejected"": 1,
+            ""interview_process"": 0,
+            ""total_candidates"": 61
+        },
+        ""mode"": ""candidates"",
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 10,
+            ""total"": 61,
+            ""pages"": 7
+        }
+    }
+}"
+"Recruitment Log
+Job Portal",recruitment.config.getapi.referral_candidates?tab=jobportal&page=1&limit=10,,GET,"tab,page , limit",,Retrive all candidates details and all status counts based on tab get the source wise candidates details,"{
+    ""message"": {
+        ""data"": [
+            {
+                ""name"": ""CAN-2025-01886"",
+                ""candidate_name"": ""Sriram"",
+                ""notice_period"": ""4"",
+                ""resume"": ""/private/files/PDFformat3.pdf"",
+                ""referred_by"": ""Linkedin"",
+                ""source"": ""Job Portal"",
+                ""status"": ""Pending"",
+                ""creation"": ""2025-09-09 09:40:51.111228"",
+                ""re_raise_request"": ""REQ-09-25-1958"",
+                ""team"": ""IT Support"",
+                ""sub_team"": ""System Manager"",
+                ""role_name"": ""Intern""
+            },
+            {
+                ""name"": ""CAN-2025-01885"",
+                ""candidate_name"": ""Sriram"",
+                ""notice_period"": ""4"",
+                ""resume"": ""/private/files/PDFformat3.pdf"",
+                ""referred_by"": ""Linkedin"",
+                ""source"": ""Job Portal"",
+                ""status"": ""Pending"",
+                ""creation"": ""2025-09-09 09:40:47.415913"",
+                ""re_raise_request"": ""REQ-09-25-1958"",
+                ""team"": ""IT Support"",
+                ""sub_team"": ""System Manager"",
+                ""role_name"": ""Intern""
+            },
+            {
+                ""name"": ""CAN-2025-01884"",
+                ""candidate_name"": ""Sriram"",
+                ""notice_period"": ""4"",
+                ""resume"": ""/private/files/PDFformat3.pdf"",
+                ""referred_by"": ""Linkedin"",
+                ""source"": ""Job Portal"",
+                ""status"": ""Pending"",
+                ""creation"": ""2025-09-09 09:40:41.856908"",
+                ""re_raise_request"": ""REQ-09-25-1958"",
+                ""team"": ""IT Support"",
+                ""sub_team"": ""System Manager"",
+                ""role_name"": ""Intern""
+            },
+            {
+                ""name"": ""CAN-2025-01883"",
+                ""candidate_name"": ""Sriram"",
+                ""notice_period"": ""4"",
+                ""resume"": ""/private/files/PDFformat3.pdf"",
+                ""referred_by"": ""Linkedin"",
+                ""source"": ""Job Portal"",
+                ""status"": ""Pending"",
+                ""creation"": ""2025-09-09 09:40:38.266939"",
+                ""re_raise_request"": ""REQ-09-25-1958"",
+                ""team"": ""IT Support"",
+                ""sub_team"": ""System Manager"",
+                ""role_name"": ""Intern""
+            },
+            {
+                ""name"": ""CAN-2025-01882"",
+                ""candidate_name"": ""Sriram"",
+                ""notice_period"": ""4"",
+                ""resume"": ""/private/files/PDFformat3.pdf"",
+                ""referred_by"": ""Linkedin"",
+                ""source"": ""Job Portal"",
+                ""status"": ""Pending"",
+                ""creation"": ""2025-09-09 09:40:35.387564"",
+                ""re_raise_request"": ""REQ-09-25-1958"",
+                ""team"": ""IT Support"",
+                ""sub_team"": ""System Manager"",
+                ""role_name"": ""Intern""
+            },
+            {
+                ""name"": ""CAN-2025-01881"",
+                ""candidate_name"": ""Sriram"",
+                ""notice_period"": ""4"",
+                ""resume"": ""/private/files/PDFformat3.pdf"",
+                ""referred_by"": ""Linkedin"",
+                ""source"": ""Job Portal"",
+                ""status"": ""Pending"",
+                ""creation"": ""2025-09-09 09:40:32.114839"",
+                ""re_raise_request"": ""REQ-09-25-1958"",
+                ""team"": ""IT Support"",
+                ""sub_team"": ""System Manager"",
+                ""role_name"": ""Intern""
+            },
+            {
+                ""name"": ""CAN-2025-01880"",
+                ""candidate_name"": ""Sriram"",
+                ""notice_period"": ""4"",
+                ""resume"": ""/private/files/PDFformat3.pdf"",
+                ""referred_by"": ""Linkedin"",
+                ""source"": ""Job Portal"",
+                ""status"": ""Pending"",
+                ""creation"": ""2025-09-03 18:30:26.462280"",
+                ""re_raise_request"": ""REQ-09-25-1958"",
+                ""team"": ""IT Support"",
+                ""sub_team"": ""System Manager"",
+                ""role_name"": ""Intern""
+            },
+            {
+                ""name"": ""CAD-09-25-01959"",
+                ""candidate_name"": ""Sriram"",
+                ""notice_period"": ""4"",
+                ""resume"": ""/private/files/PDFformat3.pdf"",
+                ""referred_by"": ""Linkedin"",
+                ""source"": ""Job Portal"",
+                ""status"": ""Pending"",
+                ""creation"": ""2025-09-03 17:50:37.503070"",
+                ""re_raise_request"": ""REQ-09-25-1958"",
+                ""team"": ""IT Support"",
+                ""sub_team"": ""System Manager"",
+                ""role_name"": ""Intern""
+            }
+        ],
+        ""status_counts"": {
+            ""pending"": 8,
+            ""shortlist"": 0,
+            ""good_fit"": 0,
+            ""hired"": 0,
+            ""no_show"": 0,
+            ""park_aside"": 0,
+            ""rejected"": 0,
+            ""interview_process"": 0,
+            ""total_candidates"": 8
+        },
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 10,
+            ""total"": 8,
+            ""pages"": 1
+        }
+    }
+}"
+"Recruitment Log
+Inbound",recruitment.config.getapi.inbound_candidates?tab=Unsorted&page=1&limit=10,,GET,"tab,page , limit",,Retrive all inbound candidates details and all status counts based on tab data,"{
+    ""message"": {
+        ""data"": [
+            {
+                ""name"": ""CAN-2025-02207"",
+                ""candidate_name"": ""Kshitij Kumara Vel (via Google Sheets)"",
+                ""creation"": ""26-11-2025 18:24"",
+                ""sender"": ""drive-shares-dm-noreply@google.com"",
+                ""subject"": ""=?UTF-8?Q?Spreadsheet_shared_with_you=3A_=E2=80=98DocType_Structure_Do?=\r\n\t=?UTF-8?Q?cumentation_2=2E0=E2=80=99?="",
+                ""sorted_date"": null,
+                ""sorted_by"": null,
+                ""re_raise_request"": null
+            },
+            {
+                ""name"": ""CAN-2025-02076"",
+                ""candidate_name"": ""Figma"",
+                ""creation"": ""04-10-2025 11:52"",
+                ""sender"": ""support@figma.com"",
+                ""subject"": ""You can now view the \""Employee Engagment\"" file"",
+                ""sorted_date"": null,
+                ""sorted_by"": null,
+                ""re_raise_request"": null
+            },
+            {
+                ""name"": ""CAN-2025-02075"",
+                ""candidate_name"": ""Sk Apsar"",
+                ""creation"": ""04-10-2025 11:23"",
+                ""sender"": ""skaapsar8149@gmail.com"",
+                ""subject"": ""hi"",
+                ""sorted_date"": null,
+                ""sorted_by"": null,
+                ""re_raise_request"": null
+            },
+            {
+                ""name"": ""CAN-2025-02020"",
+                ""candidate_name"": ""Sk Apsar"",
+                ""creation"": ""26-09-2025 20:08"",
+                ""sender"": ""skaapsar8149@gmail.com"",
+                ""subject"": ""gfdfgh"",
+                ""sorted_date"": null,
+                ""sorted_by"": null,
+                ""re_raise_request"": null
+            },
+
+        ],
+        ""pagination"": {
+            ""page"": 1,
+            ""limit"": 10,
+            ""total"": 130,
+            ""pages"": 13
+        }
+    }
+}"

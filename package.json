@@ -1,0 +1,21 @@
+{
+  "name": "agnikul-erpnext-k6-performance-framework",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20 <21"
+  },
+  "scripts": {
+    "generate:recruitment": "node scripts/generate-endpoints.mjs \"Recruitment_ v1.2.5 - Sheet1.csv\" data/generated/recruitment.endpoints.json",
+    "inspect": "bash scripts/run-k6.sh inspect --env API_KEY=dummy --env API_SECRET=dummy script.js",
+    "smoke": "bash scripts/run-k6.sh run --env TEST_TYPE=smoke script.js",
+    "baseline": "bash scripts/run-k6.sh run --env TEST_TYPE=baseline script.js",
+    "load": "bash scripts/run-k6.sh run --env TEST_TYPE=load script.js",
+    "stress": "bash scripts/run-k6.sh run --env TEST_TYPE=stress script.js",
+    "spike": "bash scripts/run-k6.sh run --env TEST_TYPE=spike script.js",
+    "endurance": "bash scripts/run-k6.sh run --env TEST_TYPE=endurance script.js",
+    "sla": "bash scripts/run-k6.sh run --env TEST_TYPE=sla script.js",
+    "capacity": "bash scripts/run-k6.sh run --env TEST_TYPE=capacity script.js"
+  }
+}

@@ -1,0 +1,16 @@
+endpointId,page,limit,start,from_date,to_date,requested_by,tab,job_name,team,sub_team,role,candidate_name,weight
+dashboard_dashboardapi_get_joblist,1,10,0,2025-01-01 00:00:00,2025-12-31 23:59:59,Self,request,,,,,,5
+dashboard_dashboardapi_candidate_analytic,1,10,0,2025-01-01 00:00:00,2025-12-31 23:59:59,Self,request,,,,,,5
+dashboard_dashboardapi_application_conv_int,1,10,0,2025-01-01 00:00:00,2025-12-31 23:59:59,Self,request,,,,,,4
+dashboard_dashboardapi_candidate_source_analytics,1,10,0,2025-01-01 00:00:00,2025-12-31 23:59:59,Self,request,,,,,,4
+job_post_getapi_get_jp,1,10,0,2025-01-01 00:00:00,2025-12-31 23:59:59,Self,request,,,,,,8
+job_post_getapi_get_jobstatus_counts,1,10,0,,,Self,request,,,,,,6
+job_post_getapi_view_details,1,10,0,,,Self,request,RE-2026-8358,,,,,2
+assignments_getapi_source_candidate,1,10,0,2025-01-01 00:00:00,2025-12-31 23:59:59,Others,assignments,,,,,,8
+assignments_getapi_candidate_screening,1,10,0,,,Others,assignments,,,,,,8
+assignments_getapi_interview,1,10,0,,,Others,assignments,,,,,,8
+assignments_getapi_hired,1,10,0,,,Others,assignments,,,,,,5
+assignments_getapi_get_candidate_card_counts,1,10,0,,,Others,assignments,,,,,,5
+recruitment_tracker_getapi_get_teams_summary,1,10,0,2025-01-01 00:00:00,2025-12-31 23:59:59,Self,request,RE-2026-8358,Automation,Back end developer,Associate C,,4
+recruitment_log_job_portal_getapi_referral_candidates,1,10,0,,,Self,jobportal,,,,,,6
+recruitment_log_inbound_getapi_inbound_candidates,1,10,0,,,Self,Unsorted,,,,,,6

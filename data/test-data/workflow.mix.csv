@@ -1,0 +1,7 @@
+workflow,category,weight,thinkTimeMinMs,thinkTimeMaxMs
+quick_access,dashboard,20,500,1500
+dashboard_review,dashboard,25,800,2500
+job_post_search,search,20,1000,3000
+assignment_review,workflow,20,1000,3500
+candidate_deep_dive,workflow,10,1500,4000
+portal_review,workflow,5,1000,2500

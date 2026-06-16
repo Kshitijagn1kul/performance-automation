@@ -1,0 +1,41 @@
+# Environment files
+
+.env
+.env.*
+!.env.example
+
+# Dependencies
+
+node_modules/
+.venv/
+
+# Test results and reports
+
+results/*
+!results/.gitkeep
+
+reports/*
+!reports/.gitkeep
+
+testing/*.html
+testing/*.json
+
+# k6 outputs
+
+*.har
+*.log
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# IDE files
+
+.vscode/
+.idea/
+
+# Python cache
+
+**pycache**/
+*.pyc
