@@ -12,6 +12,7 @@ on:
           - local
           - staging
           - production
+
       test_type:
         description: Performance test type
         required: true
@@ -26,13 +27,16 @@ on:
           - endurance
           - sla
           - capacity
+
       target_vus:
         description: Target VUs for load/stress/spike tests
         required: false
         default: "300"
+
   pull_request:
     branches:
       - main
+
   schedule:
     - cron: "30 18 * * 1-5"
 
@@ -40,21 +44,60 @@ jobs:
   performance:
     runs-on: ubuntu-latest
     timeout-minutes: 390
+
     env:
       ENVIRONMENT: ${{ github.event.inputs.environment || 'staging' }}
       TEST_TYPE: ${{ github.event.inputs.test_type || 'smoke' }}
       TARGET_VUS: ${{ github.event.inputs.target_vus || '300' }}
+
       API_KEY: ${{ secrets.K6_API_KEY }}
       API_SECRET: ${{ secrets.K6_API_SECRET }}
+
       STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
       STAGING_API_SECRET: ${{ secrets.STAGING_API_SECRET }}
+
       PROD_API_KEY: ${{ secrets.PROD_API_KEY }}
       PROD_API_SECRET: ${{ secrets.PROD_API_SECRET }}
+
       SUMMARY_FILE: results/ci-summary.json
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Debug Environment Variables
+        run: |
+          echo "=================================="
+          echo "ENVIRONMENT=$ENVIRONMENT"
+          echo "TEST_TYPE=$TEST_TYPE"
+          echo "TARGET_VUS=$TARGET_VUS"
+          echo "=================================="
+
+          if [ -z "$STAGING_API_KEY" ]; then
+            echo "❌ STAGING_API_KEY is EMPTY"
+          else
+            echo "✅ STAGING_API_KEY is PRESENT"
+          fi
+
+          if [ -z "$STAGING_API_SECRET" ]; then
+            echo "❌ STAGING_API_SECRET is EMPTY"
+          else
+            echo "✅ STAGING_API_SECRET is PRESENT"
+          fi
+
+          if [ -z "$PROD_API_KEY" ]; then
+            echo "❌ PROD_API_KEY is EMPTY"
+          else
+            echo "✅ PROD_API_KEY is PRESENT"
+          fi
+
+          if [ -z "$PROD_API_SECRET" ]; then
+            echo "❌ PROD_API_SECRET is EMPTY"
+          else
+            echo "✅ PROD_API_SECRET is PRESENT"
+          fi
+
+          echo "=================================="
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -62,7 +105,10 @@ jobs:
           node-version: "20"
 
       - name: Regenerate endpoint catalog from CSV
-        run: node scripts/generate-endpoints.mjs "Recruitment_ v1.2.5 - Sheet1.csv" data/generated/recruitment.endpoints.json
+        run: |
+          node scripts/generate-endpoints.mjs \
+          "Recruitment_ v1.2.5 - Sheet1.csv" \
+          data/generated/recruitment.endpoints.json
 
       - name: Run k6
         uses: grafana/k6-action@v0.3.1
