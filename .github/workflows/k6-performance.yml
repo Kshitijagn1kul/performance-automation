@@ -1,134 +1,150 @@
 name: k6 API Performance
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: Target environment
-        required: true
-        default: staging
-        type: choice
-        options:
-          - local
-          - staging
-          - production
+workflow_dispatch:
+inputs:
+environment:
+description: Target environment
+required: true
+default: staging
+type: choice
+options:
+- local
+- staging
+- production
 
-      test_type:
-        description: Performance test type
-        required: true
-        default: smoke
-        type: choice
-        options:
-          - smoke
-          - baseline
-          - load
-          - stress
-          - spike
-          - endurance
-          - sla
-          - capacity
+```
+  test_type:
+    description: Performance test type
+    required: true
+    default: smoke
+    type: choice
+    options:
+      - smoke
+      - baseline
+      - load
+      - stress
+      - spike
+      - endurance
+      - sla
+      - capacity
 
-      target_vus:
-        description: Target VUs for load/stress/spike tests
-        required: false
-        default: "300"
+  target_vus:
+    description: Target VUs for load/stress/spike tests
+    required: false
+    default: "300"
+```
 
-  pull_request:
-    branches:
-      - main
+pull_request:
+branches:
+- main
 
-  schedule:
-    - cron: "30 18 * * 1-5"
+schedule:
+- cron: "30 18 * * 1-5"
 
 jobs:
-  performance:
-    runs-on: ubuntu-latest
-    timeout-minutes: 390
+performance:
+runs-on: ubuntu-latest
+timeout-minutes: 390
 
-    env:
-      ENVIRONMENT: ${{ github.event.inputs.environment || 'staging' }}
-      TEST_TYPE: ${{ github.event.inputs.test_type || 'smoke' }}
-      TARGET_VUS: ${{ github.event.inputs.target_vus || '300' }}
+```
+env:
+  ENVIRONMENT: ${{ github.event.inputs.environment || 'staging' }}
+  TEST_TYPE: ${{ github.event.inputs.test_type || 'smoke' }}
+  TARGET_VUS: ${{ github.event.inputs.target_vus || '300' }}
 
-      API_KEY: ${{ secrets.K6_API_KEY }}
-      API_SECRET: ${{ secrets.K6_API_SECRET }}
+  # Repository Variable
+  STAGING_BASE_URL: ${{ vars.STAGING_BASE_URL }}
 
-      STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
-      STAGING_API_SECRET: ${{ secrets.STAGING_API_SECRET }}
+  # Secrets
+  API_KEY: ${{ secrets.K6_API_KEY }}
+  API_SECRET: ${{ secrets.K6_API_SECRET }}
 
-      PROD_API_KEY: ${{ secrets.PROD_API_KEY }}
-      PROD_API_SECRET: ${{ secrets.PROD_API_SECRET }}
+  STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
+  STAGING_API_SECRET: ${{ secrets.STAGING_API_SECRET }}
 
-      SUMMARY_FILE: results/ci-summary.json
+  PROD_API_KEY: ${{ secrets.PROD_API_KEY }}
+  PROD_API_SECRET: ${{ secrets.PROD_API_SECRET }}
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  SUMMARY_FILE: results/ci-summary.json
 
-      - name: Debug Environment Variables
-        run: |
-          echo "=================================="
-          echo "ENVIRONMENT=$ENVIRONMENT"
-          echo "TEST_TYPE=$TEST_TYPE"
-          echo "TARGET_VUS=$TARGET_VUS"
-          echo "=================================="
+steps:
+  - name: Checkout
+    uses: actions/checkout@v4
 
-          if [ -z "$STAGING_API_KEY" ]; then
-            echo "❌ STAGING_API_KEY is EMPTY"
-          else
-            echo "✅ STAGING_API_KEY is PRESENT"
-          fi
+  - name: Debug Environment Variables
+    run: |
+      echo "=================================="
+      echo "ENVIRONMENT=$ENVIRONMENT"
+      echo "TEST_TYPE=$TEST_TYPE"
+      echo "TARGET_VUS=$TARGET_VUS"
+      echo "STAGING_BASE_URL=$STAGING_BASE_URL"
+      echo "=================================="
 
-          if [ -z "$STAGING_API_SECRET" ]; then
-            echo "❌ STAGING_API_SECRET is EMPTY"
-          else
-            echo "✅ STAGING_API_SECRET is PRESENT"
-          fi
+      if [ -z "$STAGING_BASE_URL" ]; then
+        echo "❌ STAGING_BASE_URL is EMPTY"
+      else
+        echo "✅ STAGING_BASE_URL is PRESENT"
+      fi
 
-          if [ -z "$PROD_API_KEY" ]; then
-            echo "❌ PROD_API_KEY is EMPTY"
-          else
-            echo "✅ PROD_API_KEY is PRESENT"
-          fi
+      if [ -z "$STAGING_API_KEY" ]; then
+        echo "❌ STAGING_API_KEY is EMPTY"
+      else
+        echo "✅ STAGING_API_KEY is PRESENT"
+      fi
 
-          if [ -z "$PROD_API_SECRET" ]; then
-            echo "❌ PROD_API_SECRET is EMPTY"
-          else
-            echo "✅ PROD_API_SECRET is PRESENT"
-          fi
+      if [ -z "$STAGING_API_SECRET" ]; then
+        echo "❌ STAGING_API_SECRET is EMPTY"
+      else
+        echo "✅ STAGING_API_SECRET is PRESENT"
+      fi
 
-          echo "=================================="
+      if [ -z "$PROD_API_KEY" ]; then
+        echo "❌ PROD_API_KEY is EMPTY"
+      else
+        echo "✅ PROD_API_KEY is PRESENT"
+      fi
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
+      if [ -z "$PROD_API_SECRET" ]; then
+        echo "❌ PROD_API_SECRET is EMPTY"
+      else
+        echo "✅ PROD_API_SECRET is PRESENT"
+      fi
 
-      - name: Regenerate endpoint catalog from CSV
-        run: |
-          node scripts/generate-endpoints.mjs \
-          "Recruitment_ v1.2.5 - Sheet1.csv" \
-          data/generated/recruitment.endpoints.json
+      echo "=================================="
 
-      - name: Run k6
-        uses: grafana/k6-action@v0.3.1
-        with:
-          filename: tests/recruitment.js
-          flags: >-
-            --env ENVIRONMENT=${{ env.ENVIRONMENT }}
-            --env TEST_TYPE=${{ env.TEST_TYPE }}
-            --env TARGET_VUS=${{ env.TARGET_VUS }}
-            --env API_KEY=${{ env.API_KEY }}
-            --env API_SECRET=${{ env.API_SECRET }}
-            --env STAGING_API_KEY=${{ env.STAGING_API_KEY }}
-            --env STAGING_API_SECRET=${{ env.STAGING_API_SECRET }}
-            --env PROD_API_KEY=${{ env.PROD_API_KEY }}
-            --env PROD_API_SECRET=${{ env.PROD_API_SECRET }}
-            --env SUMMARY_FILE=${{ env.SUMMARY_FILE }}
+  - name: Setup Node
+    uses: actions/setup-node@v4
+    with:
+      node-version: "20"
 
-      - name: Upload performance results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: k6-performance-results
-          path: results/
+  - name: Regenerate endpoint catalog from CSV
+    run: |
+      node scripts/generate-endpoints.mjs \
+      "Recruitment_ v1.2.5 - Sheet1.csv" \
+      data/generated/recruitment.endpoints.json
+
+  - name: Run k6
+    uses: grafana/k6-action@v0.3.1
+    with:
+      filename: tests/recruitment.js
+      flags: >-
+        --env ENVIRONMENT=${{ env.ENVIRONMENT }}
+        --env STAGING_BASE_URL=${{ env.STAGING_BASE_URL }}
+        --env TEST_TYPE=${{ env.TEST_TYPE }}
+        --env TARGET_VUS=${{ env.TARGET_VUS }}
+        --env API_KEY=${{ env.API_KEY }}
+        --env API_SECRET=${{ env.API_SECRET }}
+        --env STAGING_API_KEY=${{ env.STAGING_API_KEY }}
+        --env STAGING_API_SECRET=${{ env.STAGING_API_SECRET }}
+        --env PROD_API_KEY=${{ env.PROD_API_KEY }}
+        --env PROD_API_SECRET=${{ env.PROD_API_SECRET }}
+        --env SUMMARY_FILE=${{ env.SUMMARY_FILE }}
+
+  - name: Upload performance results
+    if: always()
+    uses: actions/upload-artifact@v4
+    with:
+      name: k6-performance-results
+      path: results/
+```
