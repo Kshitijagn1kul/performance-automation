@@ -2,7 +2,7 @@ import http from "k6/http";
 import { check } from "k6";
 import config from "../../config/environments.js";
 import { recordHttpMetrics } from "./metrics.js";
-import { validateFrappeResponse } from "./validators.js";
+import { validateFrappeResponse, classifyError } from "./validators.js";
 
 function encodeQuery(query) {
   const parts = [];
@@ -96,13 +96,13 @@ export function callEndpoint(endpoint, data = {}, tags = {}) {
 
   const validation = validateFrappeResponse(endpoint, response);
 
-  if (response.status >= 400) {
-    const bodyText = response.body
-      ? String(response.body).slice(0, 512).replace(/\s+/g, " ")
-      : "";
+  if (!validation.ok) {
+    const reason = classifyError(response);
     console.error(
-      `[FAIL] ${endpoint.id} ${method} ${url} status=${response.status}` +
-        (bodyText ? ` body=${bodyText}` : ""),
+      `[FAIL]\n` +
+      `Endpoint: ${endpoint.id}\n` +
+      `Status: ${response.status !== undefined ? response.status : 0}\n` +
+      `Reason: ${reason}`
     );
   }
 
