@@ -48,21 +48,21 @@ function envValue(name, fallback = null) {
 const ENVIRONMENTS = {
   local: {
     name: "Development (Local)",
-    baseUrl: "http://localhost:3000",
+    baseUrl: ENV.DEV_BASE_URL || "http://localhost:3000",
     apiKey: envValue("DEV_API_KEY"),
     apiSecret: envValue("DEV_API_SECRET"),
   },
 
   staging: {
     name: "Staging (QA Testing)",
-    baseUrl: envValue("STAGING_BASE_URL", "https://qa.example.com"),
+    baseUrl: ENV.STAGING_BASE_URL || "http://14.99.126.171",
     apiKey: envValue("STAGING_API_KEY"),
     apiSecret: envValue("STAGING_API_SECRET"),
   },
 
   production: {
     name: "Production (Live)",
-    baseUrl: envValue("PROD_BASE_URL", "https://prod.example.com"),
+    baseUrl: ENV.PROD_BASE_URL || "https://erp.agnikul.in",
     apiKey: envValue("PROD_API_KEY"),
     apiSecret: envValue("PROD_API_SECRET"),
   },
