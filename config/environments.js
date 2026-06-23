@@ -48,21 +48,21 @@ function envValue(name, fallback = null) {
 const ENVIRONMENTS = {
   local: {
     name: "Development (Local)",
-    baseUrl: "http://localhost:3000",
+    baseUrl: ENV.DEV_BASE_URL || "http://localhost:3000",
     apiKey: envValue("DEV_API_KEY"),
     apiSecret: envValue("DEV_API_SECRET"),
   },
 
   staging: {
     name: "Staging (QA Testing)",
-    baseUrl: envValue("STAGING_BASE_URL", "https://qa.example.com"),
+    baseUrl: ENV.STAGING_BASE_URL || "http://14.99.126.171",
     apiKey: envValue("STAGING_API_KEY"),
     apiSecret: envValue("STAGING_API_SECRET"),
   },
 
   production: {
     name: "Production (Live)",
-    baseUrl: envValue("PROD_BASE_URL", "https://prod.example.com"),
+    baseUrl: ENV.PROD_BASE_URL || "https://erp.agnikul.in",
     apiKey: envValue("PROD_API_KEY"),
     apiSecret: envValue("PROD_API_SECRET"),
   },
@@ -79,11 +79,14 @@ if (!baseConfig) {
   );
 }
 
+const rawApiKey = baseConfig.apiKey || envValue("API_KEY");
+const rawApiSecret = baseConfig.apiSecret || envValue("API_SECRET");
+
 const config = {
   ...baseConfig,
   key: selectedEnv,
-  apiKey: baseConfig.apiKey || envValue("API_KEY"),
-  apiSecret: baseConfig.apiSecret || envValue("API_SECRET"),
+  apiKey: rawApiKey ? rawApiKey.trim() : rawApiKey,
+  apiSecret: rawApiSecret ? rawApiSecret.trim() : rawApiSecret,
   timeout: envValue("HTTP_TIMEOUT", "60s"),
   userAgent: envValue("USER_AGENT", "agnikul-k6-performance-framework/1.0"),
 };
