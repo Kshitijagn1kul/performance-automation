@@ -79,11 +79,14 @@ if (!baseConfig) {
   );
 }
 
+const rawApiKey = baseConfig.apiKey || envValue("API_KEY");
+const rawApiSecret = baseConfig.apiSecret || envValue("API_SECRET");
+
 const config = {
   ...baseConfig,
   key: selectedEnv,
-  apiKey: baseConfig.apiKey || envValue("API_KEY"),
-  apiSecret: baseConfig.apiSecret || envValue("API_SECRET"),
+  apiKey: rawApiKey ? rawApiKey.trim() : rawApiKey,
+  apiSecret: rawApiSecret ? rawApiSecret.trim() : rawApiSecret,
   timeout: envValue("HTTP_TIMEOUT", "60s"),
   userAgent: envValue("USER_AGENT", "agnikul-k6-performance-framework/1.0"),
 };
