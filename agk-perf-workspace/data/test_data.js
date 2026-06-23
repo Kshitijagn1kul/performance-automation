@@ -1,0 +1,16 @@
+export const testData = {
+  module: 'HROps',
+  location: 'Thaiyur',
+  secondaryLocation: 'Open Work Space 2 - IITMRP E Block',
+  fromDate: '2026-01-01',
+  toDate: '2026-01-31',
+  displayDate: '2025-12-05',
+  bookingDate: '10-11-2025',
+  item: 'Item-1',
+  itemCode: 'ITM-001',
+  vendor: 'Supplier 1',
+  stockRequestDoc: 'REQ-0030',
+  consumptionDoc: 'CON_1025_0005',
+  reportDoc: 'FR-10-25-00011',
+  billDoc: 'FI-10-25-32854',
+};
