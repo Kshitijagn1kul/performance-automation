@@ -54,14 +54,8 @@ jobs:
       STAGING_BASE_URL: ${{ vars.STAGING_BASE_URL }}
 
       # Secrets
-      API_KEY: ${{ secrets.K6_API_KEY }}
-      API_SECRET: ${{ secrets.K6_API_SECRET }}
-
-      STAGING_API_KEY: ${{ secrets.STAGING_API_KEY }}
-      STAGING_API_SECRET: ${{ secrets.STAGING_API_SECRET }}
-
-      PROD_API_KEY: ${{ secrets.PROD_API_KEY }}
-      PROD_API_SECRET: ${{ secrets.PROD_API_SECRET }}
+      LOGIN_USR: ${{ secrets.K6_LOGIN_USR }}
+      LOGIN_PWD: ${{ secrets.K6_LOGIN_PWD }}
 
       SUMMARY_FILE: results/ci-summary.json
 
@@ -84,28 +78,16 @@ jobs:
             echo "✅ STAGING_BASE_URL is PRESENT"
           fi
 
-          if [ -z "$STAGING_API_KEY" ]; then
-            echo "❌ STAGING_API_KEY is EMPTY"
+          if [ -z "$LOGIN_USR" ]; then
+            echo "❌ LOGIN_USR is EMPTY"
           else
-            echo "✅ STAGING_API_KEY is PRESENT"
+            echo "✅ LOGIN_USR is PRESENT"
           fi
 
-          if [ -z "$STAGING_API_SECRET" ]; then
-            echo "❌ STAGING_API_SECRET is EMPTY"
+          if [ -z "$LOGIN_PWD" ]; then
+            echo "❌ LOGIN_PWD is EMPTY"
           else
-            echo "✅ STAGING_API_SECRET is PRESENT"
-          fi
-
-          if [ -z "$PROD_API_KEY" ]; then
-            echo "❌ PROD_API_KEY is EMPTY"
-          else
-            echo "✅ PROD_API_KEY is PRESENT"
-          fi
-
-          if [ -z "$PROD_API_SECRET" ]; then
-            echo "❌ PROD_API_SECRET is EMPTY"
-          else
-            echo "✅ PROD_API_SECRET is PRESENT"
+            echo "✅ LOGIN_PWD is PRESENT"
           fi
 
           echo "=================================="

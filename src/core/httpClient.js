@@ -3,6 +3,7 @@ import { check } from "k6";
 import config from "../../config/environments.js";
 import { recordHttpMetrics } from "./metrics.js";
 import { validateFrappeResponse, classifyError } from "./validators.js";
+import { authenticateVU } from "./session.js";
 
 function encodeQuery(query) {
   const parts = [];
@@ -30,7 +31,6 @@ function parseQueryString(queryString) {
 
 function requestHeaders(extraHeaders = {}) {
   return {
-    Authorization: `token ${config.apiKey}:${config.apiSecret}`,
     Accept: "application/json",
     "Content-Type": "application/json",
     "User-Agent": config.userAgent,
@@ -68,6 +68,7 @@ function payloadFor(endpoint, data) {
 }
 
 export function callEndpoint(endpoint, data = {}, tags = {}) {
+  authenticateVU();
   const query = queryFor(endpoint, data);
   const queryString = encodeQuery(query);
   const url = `${config.baseUrl}${endpoint.path}${queryString ? `?${queryString}` : ""}`;
